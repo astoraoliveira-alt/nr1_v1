@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Quicksand:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,17 +11,8 @@
 
 @layer base {
   body {
-    @apply bg-teal-950 text-slate-100 font-sans antialiased;
+    @apply antialiased transition-colors duration-500;
     overflow-x: hidden;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display tracking-tight text-white;
   }
 }
 
@@ -30,7 +21,7 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-200 via-gold-400 to-gold-200 bg-[length:200%_auto] animate-glow-pulse;
   }
 
-  /* Glassmorphism 2.0 - Dark & Premium */
+  /* Theme A: Glassmorphism */
   .glass-panel {
     @apply bg-teal-900/40 backdrop-blur-xl border border-teal-700/30 shadow-2xl shadow-teal-950/50;
   }
@@ -42,26 +33,36 @@
   .glass-input {
     @apply bg-teal-950/50 border border-teal-800 text-teal-100 placeholder:text-teal-600 focus:border-gold-500/50 focus:ring-1 focus:ring-gold-500/30 transition-all;
   }
+
+  /* Theme B: Brutalist */
+  .brutal-border {
+    @apply border-2 border-black;
+  }
+
+  .brutal-shadow {
+    @apply shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all;
+  }
+
+  .brutal-input {
+    @apply bg-white border-2 border-black p-4 font-mono text-black placeholder:text-gray-500 focus:outline-none focus:bg-bw-warning transition-colors rounded-none;
+  }
+
+  /* Theme C: Soft/Neumorphic */
+  .soft-card {
+    @apply bg-soft-surface rounded-[2rem] shadow-soft border border-white/50 text-soft-text;
+  }
+
+  .soft-button {
+    @apply bg-soft-primary text-white rounded-2xl shadow-soft hover:shadow-soft-inner transition-all duration-300;
+  }
+
+  .soft-input {
+    @apply bg-soft-bg rounded-xl border-none shadow-soft-inner p-4 text-soft-text placeholder:text-slate-400 focus:ring-2 focus:ring-soft-primary/20 outline-none transition-all;
+  }
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar for dark theme */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #042f2e;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #115e59;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #134e4a;
-}
+/* Scrollbar styling handles in styles directly via CSS var if needed */

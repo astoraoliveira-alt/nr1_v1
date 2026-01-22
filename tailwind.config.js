@@ -9,52 +9,50 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'], // For Brutalist Theme
+        rounded: ['"Quicksand"', 'sans-serif'], // For Soft Theme
       },
       colors: {
-        // Deep Teal Palette (Base / Trust / AI)
+        // Theme A: Deep Teal & Gold (Current)
         teal: {
           50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
           900: '#134e4a',
-          950: '#042f2e', // Main Dark Background
+          950: '#042f2e',
         },
-        // Gold Palette (Luxury / High Contrast Accent)
         gold: {
-          50: '#fffbeb',
-          100: '#fef3c7',
           200: '#fde68a',
-          300: '#fcd34d',
           400: '#fbbf24',
-          500: '#f59e0b', // Primary CTA
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
-          950: '#451a03',
+          500: '#f59e0b',
         },
-        // Functional
-        surface: {
-          light: '#ffffff',
-          dark: '#022c22', // Very dark teal
-          glass: 'rgba(4, 47, 46, 0.7)',
+
+        // Theme B: Swiss Brutalist (High Contrast / Compliance)
+        bw: {
+          black: '#000000',
+          white: '#ffffff',
+          alert: '#ff3333', // Pure Red
+          warning: '#ffff00', // Pure Yellow
+        },
+
+        // Theme C: Soft Medical (Care / Human)
+        soft: {
+          bg: '#f0f4f8',
+          surface: '#ffffff',
+          primary: '#60a5fa', // Soft Blue
+          secondary: '#34d399', // Soft Green
+          text: '#475569',
         }
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'conic-gradient(from 90deg at 50% 50%, #042f2e 0%, #115e59 50%, #042f2e 100%)',
+      boxShadow: {
+        'brutal': '4px 4px 0px 0px #000000',
+        'soft': '20px 20px 60px #d1d9e6, -20px -20px 60px #ffffff',
+        'soft-inner': 'inset 20px 20px 60px #d1d9e6, inset -20px -20px 60px #ffffff',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
         'float': 'float 6s ease-in-out infinite',
         'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+        'marquee': 'marquee 25s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -72,6 +70,10 @@ export default {
         glowPulse: {
           '0%, 100%': { opacity: '0.4' },
           '50%': { opacity: '0.7' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
         }
       },
     },

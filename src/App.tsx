@@ -7,9 +7,20 @@ import Benefits from './components/Benefits';
 import Education from './components/Education';
 import Footer from './components/Footer';
 
-function App() {
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { clsx } from 'clsx';
+// ... imports ...
+
+function AppContent() {
+  const { theme } = useTheme();
+
   return (
-    <div className="min-h-screen bg-teal-950 font-sans text-white selection:bg-gold-500/30 selection:text-gold-200 overflow-hidden">
+    <div className={clsx(
+      "min-h-screen font-sans transition-colors duration-500 overflow-x-hidden",
+      theme === 'glam' ? "bg-teal-950 text-white selection:bg-gold-500/30 selection:text-gold-200" :
+        theme === 'brutal' ? "bg-white text-black font-mono selection:bg-bw-alert selection:text-white" :
+          "bg-soft-bg text-soft-text font-rounded selection:bg-soft-primary/30"
+    )}>
       <Hero />
       <KeyChanges />
       <Impacts />
@@ -19,6 +30,14 @@ function App() {
       <Education />
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

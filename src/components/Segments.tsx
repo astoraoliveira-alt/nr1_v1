@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Factory, HeartPulse, ShoppingBag, Briefcase, Check } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import { clsx } from 'clsx';
 
 const segments = [
@@ -38,15 +39,31 @@ const segments = [
 ];
 
 export default function Segments() {
+    const { theme } = useTheme();
     const [activeTab, setActiveTab] = useState('industry');
     const activeContent = segments.find(s => s.id === activeTab) || segments[0];
 
     return (
-        <section className="py-24 bg-teal-900 border-t border-teal-800/50">
+        <section className={clsx(
+            "py-24 transition-colors duration-500",
+            theme === 'glam' && "bg-teal-900 border-t border-teal-800/50",
+            theme === 'brutal' && "bg-bw-warning border-b-4 border-black",
+            theme === 'soft' && "bg-soft-surface"
+        )}>
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-white">Aplicável ao seu Segmento</h2>
-                    <p className="text-teal-200/70 mt-2">A solução se adapta à realidade da sua operação.</p>
+                    <h2 className={clsx(
+                        "text-3xl font-bold mb-2 transition-colors",
+                        theme === 'glam' && "text-white",
+                        theme === 'brutal' && "text-black uppercase font-mono tracking-tighter",
+                        theme === 'soft' && "text-soft-text font-rounded"
+                    )}>Aplicável ao seu Segmento</h2>
+                    <p className={clsx(
+                        "mt-2 transition-colors",
+                        theme === 'glam' && "text-teal-200/70",
+                        theme === 'brutal' && "text-black font-mono font-bold bg-white inline-block px-2 border-2 border-black",
+                        theme === 'soft' && "text-slate-500"
+                    )}>A solução se adapta à realidade da sua operação.</p>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-12">
@@ -55,10 +72,20 @@ export default function Segments() {
                             key={segment.id}
                             onClick={() => setActiveTab(segment.id)}
                             className={clsx(
-                                "flex items-center gap-2 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 border",
-                                activeTab === segment.id
-                                    ? "bg-gold-500 text-teal-950 shadow-lg shadow-gold-500/20 scale-105 border-gold-400"
-                                    : "bg-teal-950/50 text-teal-400 border-teal-800 hover:bg-teal-900 hover:text-gold-200"
+                                "flex items-center gap-2 px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base font-medium transition-all duration-300",
+                                theme === 'glam' && "rounded-full border",
+                                theme === 'brutal' && "border-2 border-black font-mono shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]",
+                                theme === 'soft' && "rounded-xl shadow-soft transition-all active:shadow-soft-inner",
+
+                                // Active states
+                                activeTab === segment.id && theme === 'glam' && "bg-gold-500 text-teal-950 shadow-lg shadow-gold-500/20 scale-105 border-gold-400",
+                                activeTab !== segment.id && theme === 'glam' && "bg-teal-950/50 text-teal-400 border-teal-800 hover:bg-teal-900 hover:text-gold-200",
+
+                                activeTab === segment.id && theme === 'brutal' && "bg-black text-white",
+                                activeTab !== segment.id && theme === 'brutal' && "bg-white text-black hover:bg-gray-100",
+
+                                activeTab === segment.id && theme === 'soft' && "bg-soft-primary text-white shadow-soft-inner",
+                                activeTab !== segment.id && theme === 'soft' && "bg-soft-bg text-slate-500 hover:text-soft-primary"
                             )}
                         >
                             <segment.icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
@@ -67,28 +94,73 @@ export default function Segments() {
                     ))}
                 </div>
 
-                <div className="glass-panel p-6 md:p-12 rounded-3xl animate-fade-in border border-teal-700/30 bg-teal-800/20">
+                <div className={clsx(
+                    "p-6 md:p-12 animate-fade-in transition-all duration-500",
+                    theme === 'glam' && "glass-panel rounded-3xl border border-teal-700/30 bg-teal-800/20",
+                    theme === 'brutal' && "bg-white border-4 border-black shadow-brutal",
+                    theme === 'soft' && "soft-card"
+                )}>
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h3 className="text-2xl font-bold text-white mb-4">{activeContent.title}</h3>
-                            <p className="text-lg text-teal-200/80 mb-8 leading-relaxed">
+                            <h3 className={clsx(
+                                "text-2xl font-bold mb-4",
+                                theme === 'glam' && "text-white",
+                                theme === 'brutal' && "text-black uppercase font-mono bg-yellow-300 inline-block px-2 border border-black",
+                                theme === 'soft' && "text-soft-text font-rounded"
+                            )}>{activeContent.title}</h3>
+                            <p className={clsx(
+                                "text-lg mb-8 leading-relaxed",
+                                theme === 'glam' && "text-teal-200/80",
+                                theme === 'brutal' && "text-black font-mono",
+                                theme === 'soft' && "text-slate-500"
+                            )}>
                                 {activeContent.description}
                             </p>
                             <ul className="space-y-4">
                                 {activeContent.points.map((point, index) => (
                                     <li key={index} className="flex items-center gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-teal-900/80 flex items-center justify-center flex-shrink-0 border border-teal-700">
-                                            <Check className="w-3.5 h-3.5 text-gold-400" />
+                                        <div className={clsx(
+                                            "w-6 h-6 flex items-center justify-center flex-shrink-0",
+                                            theme === 'glam' && "rounded-full bg-teal-900/80 border border-teal-700",
+                                            theme === 'brutal' && "bg-black text-white border border-black rounded-none",
+                                            theme === 'soft' && "rounded-full bg-soft-bg shadow-soft-inner text-soft-primary"
+                                        )}>
+                                            <Check className={clsx(
+                                                "w-3.5 h-3.5",
+                                                theme === 'glam' && "text-gold-400",
+                                                theme === 'brutal' && "text-white",
+                                                theme === 'soft' && "text-soft-primary"
+                                            )} />
                                         </div>
-                                        <span className="text-teal-100 font-medium">{point}</span>
+                                        <span className={clsx(
+                                            "font-medium",
+                                            theme === 'glam' && "text-teal-100",
+                                            theme === 'brutal' && "text-black font-mono",
+                                            theme === 'soft' && "text-soft-text"
+                                        )}>{point}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="relative h-64 md:h-80 bg-gradient-to-br from-teal-900 to-teal-950 rounded-2xl flex items-center justify-center overflow-hidden border border-teal-800 shadow-inner">
+                        <div className={clsx(
+                            "relative h-64 md:h-80 flex items-center justify-center overflow-hidden transition-all",
+                            theme === 'glam' && "bg-gradient-to-br from-teal-900 to-teal-950 rounded-2xl border border-teal-800 shadow-inner",
+                            theme === 'brutal' && "bg-white border-4 border-black rounded-none pattern-dots",
+                            theme === 'soft' && "bg-soft-bg rounded-3xl shadow-soft-inner"
+                        )}>
                             {/* Visual abstraction for the segment */}
-                            <activeContent.icon className="w-32 h-32 text-teal-800/50 absolute -bottom-4 -right-4" />
-                            <activeContent.icon className="w-24 h-24 text-teal-500 relative z-10 drop-shadow-[0_0_15px_rgba(20,184,166,0.5)]" />
+                            <activeContent.icon className={clsx(
+                                "w-32 h-32 absolute -bottom-4 -right-4 transition-colors",
+                                theme === 'glam' && "text-teal-800/50",
+                                theme === 'brutal' && "text-gray-200 text-opacity-100",
+                                theme === 'soft' && "text-soft-surface shadow-soft-inner"
+                            )} />
+                            <activeContent.icon className={clsx(
+                                "w-24 h-24 relative z-10 transition-colors",
+                                theme === 'glam' && "text-teal-500 drop-shadow-[0_0_15px_rgba(20,184,166,0.5)]",
+                                theme === 'brutal' && "text-black drop-shadow-[4px_4px_0px_white]",
+                                theme === 'soft' && "text-soft-primary filter drop-shadow-sm"
+                            )} />
                         </div>
                     </div>
                 </div>
