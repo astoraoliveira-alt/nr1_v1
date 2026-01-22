@@ -20,19 +20,19 @@ export default function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center">
 
                 {/* Typographic Hero Layout */}
-                <div className="text-center max-w-5xl mx-auto mb-16 animate-fade-in-up">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-900/50 border border-teal-700/50 text-gold-400 text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-md">
-                        <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                <div className="text-center max-w-5xl mx-auto mb-10 md:mb-16 animate-fade-in-up">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-900/50 border border-teal-700/50 text-gold-400 text-xs md:text-sm font-semibold tracking-wide uppercase mb-6 md:mb-8 backdrop-blur-md">
+                        <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-gold-500 animate-pulse"></span>
                         Atualização NR-1 2026
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-8">
+                    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] md:leading-[0.9] tracking-tight mb-6 md:mb-8">
                         A NR-1 MUDOU. <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-b from-teal-200 to-teal-600 opacity-80">RISCO</span>
                         <span className="text-gradient-gold"> PSICOSSOCIAL</span>
                     </h1>
 
-                    <p className="text-lg md:text-xl text-teal-100/70 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-xl text-teal-100/70 max-w-2xl mx-auto leading-relaxed px-4">
                         A partir de 2026, a saúde mental é obrigação legal no PGR. <br className="hidden md:block" />
                         Sua empresa está preparada ou exposta?
                     </p>

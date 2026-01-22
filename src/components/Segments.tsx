@@ -49,25 +49,25 @@ export default function Segments() {
                     <p className="text-teal-200/70 mt-2">A solução se adapta à realidade da sua operação.</p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-12">
                     {segments.map((segment) => (
                         <button
                             key={segment.id}
                             onClick={() => setActiveTab(segment.id)}
                             className={clsx(
-                                "flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 border",
+                                "flex items-center gap-2 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 border",
                                 activeTab === segment.id
                                     ? "bg-gold-500 text-teal-950 shadow-lg shadow-gold-500/20 scale-105 border-gold-400"
                                     : "bg-teal-950/50 text-teal-400 border-teal-800 hover:bg-teal-900 hover:text-gold-200"
                             )}
                         >
-                            <segment.icon className="w-4 h-4" />
+                            <segment.icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
                             {segment.label}
                         </button>
                     ))}
                 </div>
 
-                <div className="glass-panel p-8 md:p-12 rounded-3xl animate-fade-in border border-teal-700/30 bg-teal-800/20">
+                <div className="glass-panel p-6 md:p-12 rounded-3xl animate-fade-in border border-teal-700/30 bg-teal-800/20">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
                             <h3 className="text-2xl font-bold text-white mb-4">{activeContent.title}</h3>

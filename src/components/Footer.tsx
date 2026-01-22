@@ -13,7 +13,7 @@ export default function Footer() {
                     </h2>
 
                     <div className="flex flex-col items-center gap-4">
-                        <button className="group bg-gold-500 hover:bg-gold-400 text-teal-950 text-lg font-bold py-5 px-10 rounded-full shadow-[0_0_40px_rgba(245,158,11,0.2)] hover:shadow-[0_0_60px_rgba(245,158,11,0.4)] transition-all transform hover:-translate-y-1 flex items-center gap-3">
+                        <button className="group bg-gold-500 hover:bg-gold-400 text-teal-950 text-base md:text-lg font-bold py-4 px-6 md:py-5 md:px-10 rounded-full shadow-[0_0_40px_rgba(245,158,11,0.2)] hover:shadow-[0_0_60px_rgba(245,158,11,0.4)] transition-all transform hover:-translate-y-1 flex items-center gap-3">
                             <PhoneCall className="w-6 h-6" />
                             Receber ligação e agendar conversa
                             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

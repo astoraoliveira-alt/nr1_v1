@@ -2,7 +2,7 @@ import { BarChart3, Activity, Users, Phone } from 'lucide-react';
 
 export default function DashboardPreview() {
     return (
-        <section className="py-32 bg-teal-950 overflow-hidden relative">
+        <section className="py-20 md:py-32 bg-teal-950 overflow-hidden relative">
             {/* Background Ambience */}
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[500px] bg-gradient-radial from-teal-900/40 to-transparent opacity-50 blur-3xl pointer-events-none"></div>
 
